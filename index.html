@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Know Me</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <a class="logo" href="#hero">Pranav.dev</a>
+    <nav>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#lets-connect">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <p class="welcome">Welcome, I'm</p>
+      <h1><span class="first-name">Pranav</span><br><span class="name-banner-wrap"><span class="last-name">Paliwal</span><div id="banner-animation" class="banner-animation"></div></span></h1>
+      <p class="desc">I create intelligent, data-backed solutions and build responsive web and mobile apps.</p>
+      <div class="hero-links">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="https://github.com/PranavPaliwal" target="_blank" aria-label="GitHub" class="icon-link">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#232326" d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.338 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.58.688.482C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z"/></svg>
+        </a>
+        <a href="https://twitter.com/Pranavpaliwal10" target="_blank" aria-label="Twitter" class="icon-link">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#232326" d="M22.46 5.924c-.793.352-1.645.59-2.54.698a4.48 4.48 0 0 0 1.963-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 16.11 4c-2.488 0-4.507 2.02-4.507 4.507 0 .353.04.697.117 1.026C7.728 9.38 4.1 7.57 1.67 4.905c-.387.664-.61 1.437-.61 2.26 0 1.56.795 2.936 2.006 3.744-.738-.023-1.432-.226-2.04-.565v.057c0 2.18 1.55 4.002 3.604 4.418-.377.102-.775.157-1.186.157-.29 0-.57-.028-.844-.08.57 1.78 2.223 3.078 4.183 3.113A9.01 9.01 0 0 1 2 19.54a12.73 12.73 0 0 0 6.89 2.02c8.266 0 12.79-6.846 12.79-12.785 0-.195-.004-.39-.013-.583A9.14 9.14 0 0 0 24 4.59a8.98 8.98 0 0 1-2.54.698z"/></svg>
+        </a>
+        <a href="mailto:pranavpaliwal06@gmail.com" aria-label="Email" class="icon-link">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#232326" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l7.99 7.99c.39.39 1.02.39 1.41 0L20 10.01V20H4z"/></svg>
+        </a>
+      </div>
+      <div class="hero-resume-btn">
+        <button onclick="viewResume()" class="btn-primary">View / Download Resume</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <h2>Skills</h2>
+    <p class="skills-sub">Learning Every.Single.Day</p>
+    <div class="skills-grid">
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/><span class="skill-name">JAVA</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/><span class="skill-name">PYTHON</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"/><span class="skill-name">SQL</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"/><span class="skill-name">PANDAS</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"/><span class="skill-name">NUMPY</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/powerbi.svg" alt="Power BI Logo" width="30" height="30"/><span class="skill-name">POWER BI</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/><span class="skill-name">JAVASCRIPT</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"/><span class="skill-name">NODE.JS</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"/><span class="skill-name">REACT</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"/><span class="skill-name">MONGODB</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/><span class="skill-name">GIT</span></div>
+      <div class="skill-card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter"/><span class="skill-name">FLUTTER</span></div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <h2>Project Showcase</h2>
+    <div class="project-showcase">
+      <div class="gallery-container">
+        <!-- Project cards will be dynamically inserted here -->
+      </div>
+    </div>
+    <!-- Overlay for expanded card -->
+    <div class="project-overlay"></div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="education" id="education">
+    <h2>Education</h2>
+    <div class="education-timeline">
+      <div class="education-card">
+        <div class="education-year">2021–2025</div>
+        <div class="education-content">
+          <h3>GL Bajaj Institute of Technology and Management</h3>
+          <p>Information Technology</p>
+          <p class="education-location">Greater Noida, Uttar Pradesh, India</p>
+        </div>
+      </div>
+      <div class="education-card">
+        <div class="education-year">2021</div>
+        <div class="education-content">
+          <h3>Anu Public Higher Secondary School</h3>
+          <p>Physics, Chemistry, Mathematics</p>
+          <p class="education-location">Thandla, Madhya Pradesh, India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section class="about-me" id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        I've always had a thing for making tech do what it's supposed to—whether that means building snappy applications, boosting performance, or tracking down bugs that only show up five minutes before a demo. I'm a B.Tech grad who's wandered through backend logic, frontend aesthetics, and even dipped into data analysis and visualization. Frameworks? Yeah, I've used a few that either made my life easier—or gave me new gray hairs.
+        </div>
+      <div class="about-text">
+        Outside the IDE, I'm usually found chasing smoother FPS in Valorant and racking up a clean ACS—because apparently, I enjoy performance optimization in both code and combat.
+        </div>
+      <div class="about-text">
+        I'm all about connecting with like-minded folks, learning new tricks, and building tech that doesn't just work, but works well. Let's create something cool.
+        </div>
+      <div class="valorant-decoration"></div>
+    </div>
+  </section>
+
+  <!-- Let's Connect Section -->
+  <section class="lets-connect-section" id="lets-connect">
+    <h2>Let's Connect</h2>
+    <div class="connect-subtext">Ready to collaborate? Drop me a line and let's make data magic (or at least a cool project)! 🚀</div>
+    <form class="lets-connect-form" id="contact-form" autocomplete="off" novalidate>
+      <div class="lets-connect-form-row">
+        <div class="input-group">
+          <span class="icon" aria-hidden="true">&#128100;</span>
+          <input type="text" name="name" id="senderName" placeholder="Your Name" required aria-label="Your Name">
+        </div>
+        <div class="input-group">
+          <span class="icon" aria-hidden="true">&#9993;</span>
+          <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
+        </div>
+      </div>
+      <div class="lets-connect-form-row">
+        <div class="input-group textarea">
+          <span class="icon" aria-hidden="true">&#128172;</span>
+          <textarea name="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">
+          Send<span class="plane" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </form>
+  </section>
+  <!-- End Let's Connect Section -->
+   
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-quote">
+        <p class="quote">"Code is like humor. When you have to explain it, it's bad."</p>
+        <p class="quote-author">- Cory House</p>
+      </div>
+      <div class="footer-socials">
+        <a href="https://github.com/PranavPaliwal" target="_blank" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.157-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.338 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .268.18.58.688.482C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z"/></svg>
+          <span>GitHub</span>
+        </a>
+        <a href="https://linkedin.com/in//pranav-paliwal-a21683231" target="_blank" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a href="mailto:pranavpaliwal06@gmail.com" class="social-link">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l7.99 7.99c.39.39 1.02.39 1.41 0L20 10.01V20H4z"/></svg>
+          <span>Email</span>
+        </a>
+      </div>
+      <div class="footer-copyright">
+        <p>© 2025 Pranav Paliwal. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load EmailJS first -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <!-- Then load your custom script -->
+  <script src="script.js"></script>
+</body>
+</html>
