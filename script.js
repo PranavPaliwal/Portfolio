@@ -1,6 +1,6 @@
 function viewResume() {
-  // Replace 'resume.pdf' with the actual path to your resume file
-  window.open('gettingPlaced.pdf', '_blank');
+  // Open resume from Google Drive
+  window.open('https://drive.google.com/file/d/18NM3fBENNeBJgHc5hBy6RIJpiIJH5y9z/view?usp=drive_link', '_blank');
 }
 
 window.addEventListener('scroll', function() {
@@ -29,20 +29,23 @@ function typeText(text, className, cb) {
   if (className) span.className = className;
   banner.appendChild(span);
   let i = 0;
+  const isMobile = window.innerWidth <= 700;
+  const typingSpeed = isMobile ? 50 : 70; // Faster typing on mobile
   typingInterval = setInterval(() => {
     span.textContent = text.slice(0, i + 1);
     i++;
     if (i === text.length) {
       clearInterval(typingInterval);
-      setTimeout(cb, 2000);
+      setTimeout(cb, isMobile ? 1500 : 2000); // Shorter delay on mobile
     }
-  }, 70);
+  }, typingSpeed);
 }
 
 function showBanner() {
   banner.classList.add('show');
   banner.classList.remove('hide');
 }
+
 function hideBanner() {
   banner.classList.remove('show');
   banner.classList.add('hide');
@@ -56,7 +59,7 @@ function animateBanner() {
     setTimeout(() => {
       current = (current + 1) % texts.length;
       animateBanner();
-    }, 900);
+    }, window.innerWidth <= 700 ? 600 : 900); // Shorter delay on mobile
   });
 }
 
@@ -74,8 +77,8 @@ const projects = [
       "Export functionality"
     ],
     tech: ["React", "D3.js", "Node.js", "MongoDB"],
-    demo: "https://demo.example.com",
-    source: "https://github.com/yourusername/project1"
+    demo: "#",  // Replace with actual demo link when available
+    source: "https://github.com/PranavPaliwal"  // Your GitHub profile as fallback
   },
   {
     id: 2,
@@ -89,8 +92,8 @@ const projects = [
       "Performance monitoring"
     ],
     tech: ["Python", "TensorFlow", "Scikit-learn", "Docker"],
-    demo: "https://demo.example.com",
-    source: "https://github.com/yourusername/project2"
+    demo: "#",  // Replace with actual demo link when available
+    source: "https://github.com/PranavPaliwal"  // Your GitHub profile as fallback
   },
   {
     id: 3,
@@ -104,8 +107,8 @@ const projects = [
       "Order tracking system"
     ],
     tech: ["Node.js", "React", "PostgreSQL", "Stripe"],
-    demo: "https://demo.example.com",
-    source: "https://github.com/yourusername/project3"
+    demo: "#",  // Replace with actual demo link when available
+    source: "https://github.com/PranavPaliwal"  // Your GitHub profile as fallback
   }
 ];
 
@@ -113,7 +116,7 @@ function createProjectCard(project) {
   const card = document.createElement('div');
   card.className = 'project-card';
   card.innerHTML = `
-    <img src="${project.image}" alt="${project.title}">
+    <img src="${project.image}" alt="${project.title}" onerror="this.src='https://via.placeholder.com/400x300?text=Project+Image'">
     <h3>${project.title}</h3>
     <p>${project.description}</p>
   `;
@@ -158,7 +161,7 @@ function expandProject(card, project) {
       </div>
     </div>
     <div class="project-links">
-      <a href="${project.demo}" class="btn-primary demo-link" target="_blank">Live Demo</a>
+      ${project.demo !== '#' ? `<a href="${project.demo}" class="btn-primary demo-link" target="_blank">Live Demo</a>` : ''}
       <a href="${project.source}" class="btn-primary source-link" target="_blank">Source Code</a>
     </div>
   `;
