@@ -144,10 +144,11 @@ function expandProject(card, project) {
   overlay.classList.add('active');
   document.body.classList.add('modal-open'); // Prevent background scroll
 
-  // Create expanded content (header removed)
+  // Create expanded content
   const expandedContent = document.createElement('div');
   expandedContent.className = 'expanded-content';
   expandedContent.innerHTML = `
+    <button class="close-btn" aria-label="Close project details"></button>
     <p class="project-description">${project.description}</p>
     <div class="project-features">
       <ul class="feature-list">
@@ -197,11 +198,22 @@ function expandProject(card, project) {
     card.style.borderRadius = '24px'; // Less rounded
   });
 
-  // Close on overlay click
-  overlay.addEventListener('click', () => {
-    collapseProject(card, originalPosition);
-    document.body.classList.remove('modal-open'); // Restore scroll
-  });
+  // Close on overlay click (only for desktop)
+  if (window.innerWidth > 700) {
+    overlay.addEventListener('click', () => {
+      collapseProject(card, originalPosition);
+      document.body.classList.remove('modal-open'); // Restore scroll
+    });
+  }
+
+  // Close on close button click (mobile)
+  const closeBtn = expandedContent.querySelector('.close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      collapseProject(card, originalPosition);
+      document.body.classList.remove('modal-open'); // Restore scroll
+    });
+  }
 
   // Close on escape key
   document.addEventListener('keydown', function closeOnEscape(e) {
