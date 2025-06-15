@@ -515,12 +515,11 @@ nav a:hover {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--text);
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 1001;
 }
 
 .project-card.expanded .close-btn:hover {
@@ -1318,41 +1317,5 @@ body.modal-open {
         background: var(--card);
         border-radius: var(--radius);
         margin-bottom: 20px;
-    }
-}
-
-/* Mobile-only close button */
-@media (max-width: 700px) {
-    .project-card.expanded .close-btn {
-        display: flex; /* Show only on mobile */
-        top: 12px;
-        right: 12px;
-        width: 28px;
-        height: 28px;
-        background: rgba(0, 0, 0, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    .project-card.expanded .close-btn::before,
-    .project-card.expanded .close-btn::after {
-        content: '';
-        position: absolute;
-        width: 14px;
-        height: 2px;
-        background: #fff;
-        border-radius: 2px;
-    }
-
-    .project-card.expanded .close-btn::before {
-        transform: rotate(45deg);
-    }
-
-    .project-card.expanded .close-btn::after {
-        transform: rotate(-45deg);
-    }
-
-    .project-card.expanded .close-btn:hover {
-        background: rgba(0, 0, 0, 0.7);
-        transform: rotate(90deg);
     }
 }
