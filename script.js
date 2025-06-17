@@ -354,3 +354,110 @@ window.onload = function() {
         }
     });
 };
+
+// Responsive mobile menu
+function createMobileMenu() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+
+  // Create menu button
+  const menuBtn = document.createElement('button');
+  menuBtn.className = 'mobile-menu-btn';
+  menuBtn.setAttribute('aria-label', 'Open navigation menu');
+  menuBtn.innerHTML = '<span></span><span></span><span></span>';
+  nav.parentNode.insertBefore(menuBtn, nav);
+
+  // Create dropdown
+  const dropdown = document.createElement('div');
+  dropdown.className = 'mobile-nav-dropdown';
+  dropdown.innerHTML = nav.innerHTML;
+  document.body.appendChild(dropdown);
+
+  // Toggle dropdown
+  menuBtn.addEventListener('click', () => {
+    dropdown.classList.toggle('open');
+    menuBtn.classList.toggle('open');
+  });
+
+  // Close dropdown on link click
+  dropdown.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+      dropdown.classList.remove('open');
+      menuBtn.classList.remove('open');
+    }
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  createMobileMenu();
+
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = Array.from(navLinks).map(link => {
+    const id = link.getAttribute('href').replace('#', '');
+    return document.getElementById(id);
+  });
+
+  function onScroll() {
+    let currentSectionIndex = -1;
+    const scrollY = window.scrollY;
+    // Find the first section whose top is below the scroll position + offset
+    for (let i = 1; i < sections.length; i++) {
+      const section = sections[i];
+      if (section && scrollY + 120 >= section.offsetTop) {
+        currentSectionIndex = i;
+      }
+    }
+    // If not in any section, check if we're in Skills
+    if (currentSectionIndex === -1 && scrollY + 120 >= sections[0].offsetTop) {
+      currentSectionIndex = 0;
+    }
+    navLinks.forEach((link, i) => {
+      if (i === currentSectionIndex && currentSectionIndex !== -1) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+    // Also update mobile dropdown links
+    const dropdownLinks = document.querySelectorAll('.mobile-nav-dropdown a');
+    dropdownLinks.forEach((link, i) => {
+      if (i === currentSectionIndex && currentSectionIndex !== -1) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', onScroll);
+  onScroll(); // Set on load
+});
+
+// Falling/stacking animation for skill cards on first reveal
+function animateSkillsOnReveal() {
+  const skillsSection = document.getElementById('skills');
+  const skillCards = document.querySelectorAll('.skills-grid .skill-card');
+
+  if (!skillsSection || !skillCards.length) return;
+
+  const observer = new window.IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        skillCards.forEach((card, i) => {
+          card.style.setProperty('--skill-delay', `${i * 0.08}s`);
+          card.classList.remove('animated');
+          // Force reflow to restart animation
+          void card.offsetWidth;
+          card.classList.add('animated');
+        });
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+  observer.observe(skillsSection);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  animateSkillsOnReveal();
+});
