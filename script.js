@@ -67,18 +67,18 @@ function animateBanner() {
 const projects = [
   {
     id: 1,
-    title: "Data Analytics Dashboard",
-    description: "An interactive dashboard for visualizing and analyzing complex datasets with real-time updates and custom reporting features.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    title: "Spending Tracker",
+    description: "An Expense Tracker App Built with Flutter and Dart, designed to help you keep track of your expenses in a fun and simple way.",
+    image: "https://is3-ssl.mzstatic.com/image/thumb/Purple127/v4/e4/99/61/e49961f0-fdbd-5e69-9183-a2159415730b/source/512x512bb.jpg",
     features: [
-      "Real-time data visualization",
-      "Custom report generation",
-      "Interactive filtering and sorting",
-      "Export functionality"
+      "📊 Expense Tracking: Monitor your spending habits easily.",
+      "🔄 Recurring Expenses: Manage those monthly bills efficiently.",
+      "📈 Charts & Graphs: Visualize your financial trends.",
+      "🌐 Cross-Platform: Access your expense tracker on iOS, Android, and web."
     ],
-    tech: ["React", "D3.js", "Node.js", "MongoDB"],
-    demo: "https://astonishing-zabaione-433b6c.netlify.app/",  // Replace with actual demo link when available
-    source: "https://github.com/PranavPaliwal"  // Your GitHub profile as fallback
+    tech: ["Flutter", "Dart", "Node.js", "MongoDB"],
+    demo: "#",  // Replace with actual demo link when available
+    source: "https://github.com/PranavPaliwal/Spendings"  // Your GitHub profile as fallback
   },
   {
     id: 2,
