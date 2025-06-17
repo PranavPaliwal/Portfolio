@@ -1056,6 +1056,29 @@ footer {
         border-radius: var(--radius);
         margin-bottom: 20px;
     }
+    .education-timeline {
+        max-width: 100%;
+        padding: 0 4vw;
+    }
+    .education-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 18px 12px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    .education-content h3,
+    .education-content p,
+    .education-location {
+        font-size: 1em !important;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        text-align: left;
+    }
+    .education-content {
+        width: 100%;
+    }
 }
 
 @media (max-width: 500px) {
