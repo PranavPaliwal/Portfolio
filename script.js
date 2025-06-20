@@ -461,3 +461,30 @@ function animateSkillsOnReveal() {
 window.addEventListener('DOMContentLoaded', () => {
   animateSkillsOnReveal();
 });
+
+// --- Scroll Reveal for Sections (except hero) ---
+function revealSectionsOnScroll() {
+  // Section-level reveal
+  const sections = document.querySelectorAll('section:not(.hero), .about-me, .education');
+  sections.forEach(section => {
+    if (!section.classList.contains('reveal-on-scroll')) return;
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < windowHeight - 80) {
+      section.classList.add('visible');
+    }
+  });
+
+  // Content-level reveal
+  const contentBlocks = document.querySelectorAll('.reveal-on-scroll-content');
+  contentBlocks.forEach(content => {
+    const rect = content.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < windowHeight - 60) {
+      content.classList.add('visible');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealSectionsOnScroll);
+window.addEventListener('DOMContentLoaded', revealSectionsOnScroll);
