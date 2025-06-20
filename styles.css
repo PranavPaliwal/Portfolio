@@ -1132,9 +1132,11 @@ footer {
         width: 100%;
     }
     .skills-grid .skill-card img[alt="JavaScript"] + .skill-name {
-        min-width: 90px;
-        word-break: break-word;
-        font-size: 0.95em;
+        min-width: unset;
+        font-size: 0.85em;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        word-break: normal;
     }
 }
 
