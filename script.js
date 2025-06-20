@@ -114,13 +114,12 @@ const projects = [
 
 function createProjectCard(project) {
   const card = document.createElement('div');
-  card.className = 'project-card';
+  card.className = 'project-card slide-in-on-scroll';
   card.innerHTML = `
     <img src="${project.image}" alt="${project.title}" onerror="this.src='https://via.placeholder.com/400x300?text=Project+Image'">
-    <h3>${project.title}</h3>
-    <p>${project.description}</p>
+    <h3 class="slide-in-on-scroll">${project.title}</h3>
+    <p class="slide-in-on-scroll">${project.description}</p>
   `;
-  
   card.addEventListener('click', () => expandProject(card, project));
   return card;
 }
@@ -242,11 +241,11 @@ function collapseProject(card, originalPosition) {
 // Initialize project showcase
 function initProjectShowcase() {
   const galleryContainer = document.querySelector('.gallery-container');
-  
   // Create and append project cards
   projects.forEach(project => {
     galleryContainer.appendChild(createProjectCard(project));
   });
+  animateProjectCardsOnScroll(); // Ensure observer runs after cards are inserted
 }
 
 // Initialize when DOM is ready
@@ -488,3 +487,24 @@ function revealSectionsOnScroll() {
 
 window.addEventListener('scroll', revealSectionsOnScroll);
 window.addEventListener('DOMContentLoaded', revealSectionsOnScroll);
+
+// --- Project Cards Slide In On Scroll ---
+function animateProjectCardsOnScroll() {
+  const cards = document.querySelectorAll('.project-card.slide-in-on-scroll');
+  const observer = new window.IntersectionObserver((entries, obs) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Animate child text content with a stagger
+        const children = entry.target.querySelectorAll('.slide-in-on-scroll');
+        children.forEach((el, idx) => {
+          setTimeout(() => el.classList.add('visible'), 120 * idx);
+        });
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.18 });
+  cards.forEach((card, i) => {
+    observer.observe(card);
+  });
+}

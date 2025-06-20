@@ -1131,6 +1131,11 @@ footer {
     .education-content {
         width: 100%;
     }
+    .skills-grid .skill-card img[alt="JavaScript"] + .skill-name {
+        min-width: 90px;
+        word-break: break-word;
+        font-size: 0.95em;
+    }
 }
 
 @media (max-width: 500px) {
@@ -1556,4 +1561,27 @@ body.modal-open {
   opacity: 1;
   transform: translateY(0);
   animation: fadeInUpSection 0.8s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+/* --- Slide In On Scroll Animation for Project Cards and Content --- */
+@keyframes slideInCard {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.slide-in-on-scroll {
+  opacity: 0;
+  transform: translateY(40px) scale(0.97);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+  will-change: opacity, transform;
+}
+.slide-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: slideInCard 0.7s cubic-bezier(0.4,0,0.2,1) both;
 }
