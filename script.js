@@ -82,33 +82,32 @@ const projects = [
   },
   {
     id: 2,
-    title: "Machine Learning Pipeline",
-    description: "An end-to-end machine learning pipeline for predictive analytics with automated model training and deployment capabilities.",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    title: "Weather Application",
+    description: "Weather Application, meticulously crafted with HTML, CSS, and JavaScript.",
+    image: "https://png.pngtree.com/thumb_back/fh260/background/20230930/pngtree-collection-of-3d-weather-icons-for-weather-forecast-app-and-web-image_13541310.png",
     features: [
-      "Automated data preprocessing",
-      "Model training and validation",
-      "Real-time predictions",
-      "Performance monitoring"
+      "🌍 Real-Time Weather Data: Instant access to current weather information.",
+      "🖼️ Dynamic Backgrounds: A fresh visual experience with every search.",
+      "📡 OpenWeatherMap Integration: Reliable, up-to-date weather information."
     ],
-    tech: ["Python", "TensorFlow", "Scikit-learn", "Docker"],
-    demo: "#",  // Replace with actual demo link when available
-    source: "https://github.com/PranavPaliwal"  // Your GitHub profile as fallback
+    tech: ["HTML", "CSS", "Javascript", "Fetch API"],
+    demo: "https://whatsweathernoww.netlify.app/",  // Replace with actual demo link when available
+    source: "https://github.com/PranavPaliwal/Weather_app"  // Your GitHub profile as fallback
   },
   {
     id: 3,
-    title: "E-commerce Platform",
-    description: "A full-featured e-commerce platform with secure payment processing, inventory management, and customer analytics.",
-    image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    title: "Power BI Projects ",
+    description: "Power BI Projects, featuring various data visualization and analysis dashboards. Each project includes a.pbix file for the dashboard and a corresponding .xlsx/.csv file serving as the sample database.",
+    image: "https://i.pinimg.com/736x/22/3d/87/223d8739fcec66208d6fe4d5aece287f.jpg",
     features: [
-      "Secure payment processing",
-      "Inventory management",
-      "Customer analytics",
-      "Order tracking system"
+     "📊 Interactive dashboards for real-time data visualization",
+     "🔒 Role-based access for secure data sharing",
+     "🛠️ Customizable reports with drill-down capabilities",
+     "🔗 Seamless integration with multiple data sources"
     ],
-    tech: ["Node.js", "React", "PostgreSQL", "Stripe"],
+    tech: ["Data Cleaning", "Data Visualization", "Data Analysis", "Power BI"],
     demo: "#",  // Replace with actual demo link when available
-    source: "https://github.com/PranavPaliwal"  // Your GitHub profile as fallback
+    source: "https://github.com/PranavPaliwal/Data-Visualization"  // Your GitHub profile as fallback
   }
 ];
 
@@ -125,117 +124,74 @@ function createProjectCard(project) {
 }
 
 function expandProject(card, project) {
-  // Get original card position and dimensions
-  const rect = card.getBoundingClientRect();
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
-  // Store original position
-  const originalPosition = {
-    top: rect.top + scrollTop,
-    left: rect.left + scrollLeft,
-    width: rect.width,
-    height: rect.height
-  };
-
   // Create overlay
   const overlay = document.querySelector('.project-overlay');
   overlay.classList.add('active');
   document.body.classList.add('modal-open'); // Prevent background scroll
 
-  // Create expanded content (header removed)
-  const expandedContent = document.createElement('div');
-  expandedContent.className = 'expanded-content';
-  expandedContent.innerHTML = `
-    <p class="project-description">${project.description}</p>
-    <div class="project-features">
-      <ul class="feature-list">
-        ${project.features.map(feature => `<li>${feature}</li>`).join('')}
-      </ul>
-    </div>
-    <div class="tech-stack">
-      <h4>Technologies Used</h4>
-      <div class="tech-tags">
-        ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+  // Remove any previous modal if exists
+  const prevModal = document.querySelector('.project-card.expanded');
+  if (prevModal) prevModal.remove();
+
+  // Create modal card
+  const modalCard = document.createElement('div');
+  modalCard.className = 'project-card expanded';
+  modalCard.innerHTML = `
+    <button class="close-btn" aria-label="Close">&times;</button>
+    <img src="${project.image}" alt="${project.title}" onerror="this.src='https://via.placeholder.com/400x300?text=Project+Image'">
+    <h3 class="project-title">${project.title}</h3>
+    <div class="expanded-content">
+      <p class="project-description">${project.description}</p>
+      <div class="project-features">
+        <ul class="feature-list">
+          ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+        </ul>
       </div>
-    </div>
-    <div class="project-links">
-      ${project.demo !== '#' ? `<a href="${project.demo}" class="btn-primary demo-link" target="_blank">Live Demo</a>` : ''}
-      <a href="${project.source}" class="btn-primary source-link" target="_blank">Source Code</a>
+      <div class="tech-stack">
+        <h4>Technologies Used</h4>
+        <div class="tech-tags">
+          ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+        </div>
+      </div>
+      <div class="project-links">
+        ${project.demo !== '#' ? `<a href="${project.demo}" class="btn-primary demo-link" target="_blank">Live Demo</a>` : ''}
+        <a href="${project.source}" class="btn-primary source-link" target="_blank">Source Code</a>
+      </div>
     </div>
   `;
 
-  // Remove any previous expanded content
-  const prevExpanded = card.querySelector('.expanded-content');
-  if (prevExpanded) prevExpanded.remove();
-
-  // Add expanded content and class
-  card.appendChild(expandedContent);
-  card.classList.add('expanded');
-
-  // Calculate scale and position for smooth animation
-  const scaleX = window.innerWidth / originalPosition.width;
-  const scaleY = window.innerHeight / originalPosition.height;
-  const scale = Math.min(scaleX, scaleY) * 0.9; // 90% of the maximum possible scale
-
-  // Set initial transform
-  card.style.transform = `translate(${originalPosition.left}px, ${originalPosition.top}px) scale(1)`;
-  card.style.width = `${originalPosition.width}px`;
-  card.style.height = `${originalPosition.height}px`;
-
-  // Force reflow
-  card.offsetHeight;
-
-  // Animate to expanded state
-  requestAnimationFrame(() => {
-    card.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-    card.style.transform = `translate(-50%, -50%) scale(1)`;
-    card.style.width = '1200px'; // Make it wider
-    card.style.maxWidth = '95vw';
-    card.style.height = 'auto';
-    card.style.borderRadius = '24px'; // Less rounded
+  // Add close button event
+  modalCard.querySelector('.close-btn').addEventListener('click', () => {
+    collapseProject();
   });
 
-  // Close on overlay click
-  overlay.addEventListener('click', () => {
-    collapseProject(card, originalPosition);
-    document.body.classList.remove('modal-open'); // Restore scroll
-  });
+  // Add modal to overlay (not to the card's parent)
+  overlay.appendChild(modalCard);
+
+  // Close on overlay click (but not when clicking the modal itself)
+  overlay.onclick = (e) => {
+    if (e.target === overlay) {
+      collapseProject();
+    }
+  };
 
   // Close on escape key
-  document.addEventListener('keydown', function closeOnEscape(e) {
+  function closeOnEscape(e) {
     if (e.key === 'Escape') {
-      collapseProject(card, originalPosition);
-      document.body.classList.remove('modal-open'); // Restore scroll
+      collapseProject();
       document.removeEventListener('keydown', closeOnEscape);
     }
-  });
+  }
+  document.addEventListener('keydown', closeOnEscape);
 }
 
-function collapseProject(card, originalPosition) {
-  // Animate back to original position
-  card.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-  card.style.transform = `translate(${originalPosition.left}px, ${originalPosition.top}px) scale(1)`;
-  card.style.width = `${originalPosition.width}px`;
-  card.style.height = `${originalPosition.height}px`;
-
-  // Remove expanded content and class after animation
-  setTimeout(() => {
-    const expandedContent = card.querySelector('.expanded-content');
-    if (expandedContent) {
-      expandedContent.remove();
-    }
-    card.classList.remove('expanded');
-    card.style.transform = '';
-    card.style.width = '';
-    card.style.height = '';
-    card.style.transition = '';
-  }, 300);
-
-  // Remove overlay
+function collapseProject() {
+  // Remove modal card from overlay
   const overlay = document.querySelector('.project-overlay');
+  const modalCard = overlay.querySelector('.project-card.expanded');
+  if (modalCard) modalCard.remove();
   overlay.classList.remove('active');
-  document.body.classList.remove('modal-open'); // Restore scroll
+  document.body.classList.remove('modal-open');
 }
 
 // Initialize project showcase
